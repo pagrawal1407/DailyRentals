@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.csci567.dailyrentals.CarDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/topImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/th4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tell us about your car"
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginBottom="20dp"
+            android:layout_above="@+id/carLocationText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Where is your car located?"
+            android:id="@+id/carLocationText"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_below="@+id/topImage"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address"
+            android:textSize="11dp"
+            android:id="@+id/enterAddress"
+            android:layout_below="@+id/carLocationText"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your address here"
+            android:layout_below="@+id/enterAddress"
+            android:id="@+id/acceptAddress"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zipcode"
+            android:textSize="11dp"
+            android:id="@+id/zipcode"
+            android:layout_below="@+id/acceptAddress"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Zip code"
+            android:layout_below="@+id/zipcode"
+            android:id="@+id/acceptZipCode"/>
+
+        <View android:background="#a8a8a6"
+            android:layout_width = "match_parent"
+            android:layout_height="0.75dp"
+            android:layout_below="@+id/acceptZipCode"
+            android:id="@+id/separatorLine"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Which car do you own?"
+            android:id="@+id/carTypeText"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_below="@+id/separatorLine"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Year"
+            android:textSize="11dp"
+            android:id="@+id/yearText"
+            android:layout_below="@+id/carTypeText"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter year"
+            android:layout_below="@+id/yearText"
+            android:id="@+id/acceptYear"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Make"
+            android:textSize="11dp"
+            android:id="@+id/makeText"
+            android:layout_below="@+id/acceptYear"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Make"
+            android:layout_below="@+id/makeText"
+            android:id="@+id/acceptMake"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Model"
+            android:textSize="11dp"
+            android:id="@+id/modelText"
+            android:layout_below="@+id/acceptMake"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Model"
+            android:layout_below="@+id/modelText"
+            android:id="@+id/acceptModel"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transmission"
+            android:textSize="11dp"
+            android:id="@+id/transmissionText"
+            android:layout_below="@+id/acceptModel"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Transmission"
+            android:layout_below="@+id/transmissionText"
+            android:id="@+id/acceptTransmission"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Odometer"
+            android:textSize="11dp"
+            android:id="@+id/odometerText"
+            android:layout_below="@+id/acceptTransmission"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Odometer"
+            android:layout_below="@+id/odometerText"
+            android:id="@+id/acceptOdometer"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trim (optional)"
+            android:textSize="11dp"
+            android:id="@+id/trimText"
+            android:layout_below="@+id/acceptOdometer"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Trim"
+            android:layout_below="@+id/trimText"
+            android:id="@+id/acceptTrim"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Style (optional)"
+            android:textSize="11dp"
+            android:id="@+id/styleText"
+            android:layout_below="@+id/acceptTrim"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Style"
+            android:layout_below="@+id/styleText"
+            android:id="@+id/acceptStyle"/>
+
+        <View android:background="#a8a8a6"
+            android:layout_width = "match_parent"
+            android:layout_height="0.75dp"
+            android:layout_below="@+id/acceptStyle"
+            android:id="@+id/separatorLine1"
+            android:layout_marginTop="25dp" />
+
+        <CheckBox
+            android:id="@+id/salvageTitleCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My car has never had a branded or salvage title"
+            android:layout_below="@+id/separatorLine1"
+            android:layout_marginTop="15dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/salvageTitleCheckBox"
+            android:layout_marginTop="35dp"
+            android:text="Next"
+            android:textSize="18dp"
+            android:textColor="#ffffff"
+            android:background="#8b36bc"
+            android:id="@+id/nextButton"/>
+
+    </RelativeLayout>
+</ScrollView>
+

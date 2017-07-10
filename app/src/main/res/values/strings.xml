@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DailyRentals</string>
+    <string name="signup">Sign Up</string>
+    <string name="signin">Sign In</string>
+    <string name="passwd">Password</string>
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="email">Email</string>
+    <string name="rent_car">Rent out your car, earn extra cash easy</string>
+    <string name="list_car">List your car</string>
+    <string name="get_started">Get Started</string>
+    <string name="learn_more">learn more</string>
+    <string name="address">Enter address</string>
+    <string name="zipcode">zip code</string>
+    <string name="search_title">Search</string>
+</resources>
