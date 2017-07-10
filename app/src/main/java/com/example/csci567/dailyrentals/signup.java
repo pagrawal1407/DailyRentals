@@ -45,11 +45,20 @@ public class signup extends AppCompatActivity {
                 String emailInput = email.getText().toString();
                 String passwdInput = passwd.getText().toString();
 
-                if (fnameInput.equals("") || lnameInput.equals("") || emailInput.equals("") || passwdInput.equals(""))
-                    Toast.makeText(signup.this, "Please enter all the information.", Toast.LENGTH_LONG).show();
+                if (fnameInput.equals("") )
+                    Toast.makeText(signup.this, "Please enter First Name.", Toast.LENGTH_LONG).show();
+                else if(lnameInput.equals(""))
+                    Toast.makeText(signup.this, "Please enter Last Name.", Toast.LENGTH_LONG).show();
+                else if (emailInput.equals(""))
+                    Toast.makeText(signup.this, "Please enter Email.", Toast.LENGTH_LONG).show();
+                else if(passwdInput.equals(""))
+                    Toast.makeText(signup.this, "Please enter Password.", Toast.LENGTH_LONG).show();
+
                 else {
                     volleyCall(fnameInput, lnameInput, emailInput, passwdInput);
                 }
+
+
             }
         });
     }
