@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.util.Patterns.*;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -45,6 +46,8 @@ public class signup extends AppCompatActivity {
                 String emailInput = email.getText().toString();
                 String passwdInput = passwd.getText().toString();
 
+                if (fnameInput.equals("") && lnameInput.equals("") && emailInput.equals("") && passwdInput.equals(""))
+                    Toast.makeText(signup.this, "Please enter all the details", Toast.LENGTH_LONG).show();
                 if (fnameInput.equals("") )
                     Toast.makeText(signup.this, "Please enter First Name.", Toast.LENGTH_LONG).show();
                 else if(lnameInput.equals(""))
@@ -55,12 +58,20 @@ public class signup extends AppCompatActivity {
                     Toast.makeText(signup.this, "Please enter Password.", Toast.LENGTH_LONG).show();
 
                 else {
-                    volleyCall(fnameInput, lnameInput, emailInput, passwdInput);
+
+                    if (isValidEmail(emailInput))
+                        volleyCall(fnameInput, lnameInput, emailInput, passwdInput);
+                    else
+                        Toast.makeText(signup.this, "Please enter a valid Email.", Toast.LENGTH_LONG).show();
                 }
 
 
             }
         });
+    }
+
+    private boolean isValidEmail(String emailInput) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(emailInput).matches();
     }
 
     private void volleyCall(String fnameInput, String lnameInput, String emailInput, String passwdInput) {
