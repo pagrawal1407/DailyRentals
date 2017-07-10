@@ -19,10 +19,10 @@ public class CarChoice extends AppCompatActivity {
 
         String jsonmyobject = "";
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null){
+        if (bundle != null) {
             jsonmyobject = bundle.getString("DataPOJO object");
         }
-        DataPOJO data = new Gson().fromJson(jsonmyobject,DataPOJO.class);
+        DataPOJO data = new Gson().fromJson(jsonmyobject, DataPOJO.class);
         TextView textView = (TextView) findViewById(R.id.datapojo_display);
         textView.setText(data.make + " " + data.model);
 
