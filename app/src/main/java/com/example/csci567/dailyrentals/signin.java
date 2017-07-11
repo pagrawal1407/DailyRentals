@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -34,14 +35,23 @@ import java.util.Map;
 public class signin extends Activity {
     public EditText email, passwd;
     public Button signin;
+    public TextView newMemberText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-
         email = (EditText) findViewById(R.id.signin_email);
         passwd = (EditText) findViewById(R.id.signin_password);
+        newMemberText = (TextView)findViewById(R.id.notmembertext);
+
+        newMemberText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newSignupActivity = new Intent(getApplicationContext(),signup.class);
+                startActivity(newSignupActivity);
+            }
+        });
 
         signin = (Button) findViewById(R.id.signin_button);
         signin.setOnClickListener(new View.OnClickListener() {
