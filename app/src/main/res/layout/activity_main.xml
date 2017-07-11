@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcomeimage"
+    android:background="@mipmap/ic_welcome_image"
+
     tools:context="com.example.csci567.dailyrentals.MainActivity">
 
     <TextView
