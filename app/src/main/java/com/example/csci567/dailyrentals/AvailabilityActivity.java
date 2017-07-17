@@ -43,7 +43,7 @@ public class AvailabilityActivity extends AppCompatActivity {
                 bundle.putString("shortesttrip", shortestTripText);
                 bundle.putString("longesttrip", longestTripText);
 
-                Intent intent = new Intent(getBaseContext(),DetailsActivity.class);
+                Intent intent = new Intent(getBaseContext(),ImageActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

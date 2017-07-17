@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -23,13 +25,13 @@
         <activity android:name=".signin" />
         <activity android:name=".signup" />
         <activity android:name=".WelcomePage" />
-        <activity android:name=".CustomSwipeAdapter" />
         <activity android:name=".ListCarActivity" />
         <activity android:name=".CarDetails" />
         <activity android:name=".AvailabilityActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".DisplaySearchResults" />
-        <activity android:name=".CarChoice"></activity>
+        <activity android:name=".CarChoice" />
+        <activity android:name=".ImageActivity"></activity>
     </application>
 
 </manifest>

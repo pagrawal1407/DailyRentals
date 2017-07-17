@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.csci567.dailyrentals.ImageActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/image_display"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="150dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:orientation="vertical">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Image"
+        android:textSize="18dp"
+        android:textColor="#ffffff"
+        android:background="#8b36bc"
+        android:id="@+id/upload_button"
+        android:layout_weight="1" />
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/next_button"
+        android:textSize="18dp"
+        android:textColor="#ffffff"
+        android:background="#8b36bc"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="22dp"
+        android:layout_weight="1"
+        android:layout_marginTop="15dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

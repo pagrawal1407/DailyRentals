@@ -75,6 +75,7 @@ public class DetailsActivity extends AppCompatActivity {
                 jsonparams.put("longPT", bundle.getString("longesttrip"));
                 jsonparams.put("latitude", latitude);
                 jsonparams.put("longitude", longitude);
+                jsonparams.put("imageURL", bundle.getString("bitmap"));
                 jsonparams.put("zipcode", bundle.getString("zipcode"));
                 jsonparams.put("year", bundle.getString("year"));
                 jsonparams.put("make", bundle.getString("make"));
