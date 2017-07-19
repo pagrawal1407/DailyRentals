@@ -81,6 +81,7 @@ public class DisplaySearchResults extends AppCompatActivity {
                             data.carDescription = singleItem.getString("carDes");
                             data.advanceNotice = singleItem.getString("advNotice");
                             data.trim = singleItem.getString("trim");
+                            data.image = singleItem.getString("image");
                             data.issuingCountry = singleItem.getString("issuing_Country");
                             //data.issuingState = singleItem.getString("issuing_State");
                             data.licenseNumber = singleItem.getString("licenseNum");

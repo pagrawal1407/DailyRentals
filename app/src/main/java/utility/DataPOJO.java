@@ -21,6 +21,7 @@ public class DataPOJO {
     public String trim;
     public String fName;
     public String lName;
+    public String image;
     public String licenseNumber;
     public String licenseState;
     public String issuingCountry;

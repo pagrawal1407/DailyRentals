@@ -1,7 +1,11 @@
 package com.example.csci567.dailyrentals;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -26,5 +30,9 @@ public class CarChoice extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.datapojo_display);
         textView.setText(data.make + " " + data.model);
 
+        ImageView carImage = (ImageView) findViewById(R.id.car_image);
+        byte[] decodedImage = Base64.decode(data.image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
+        carImage.setImageBitmap(decodedByte);
     }
 }
