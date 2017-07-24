@@ -14,7 +14,7 @@ import java.util.Map;
 public class CarDetails extends AppCompatActivity {
 
     private Button next;
-    private EditText address, zipCode, year, make, model, transmission, odometer, trim, style;
+    private EditText address, zipCode, year, make, model, transmission, odometer, trim, style, fName, lName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,8 @@ public class CarDetails extends AppCompatActivity {
     }
 
     private void intitializeEditText() {
+        fName = (EditText) findViewById(R.id.fName);
+        lName = (EditText) findViewById(R.id.lName);
         address = (EditText) findViewById(R.id.acceptAddress);
         zipCode = (EditText) findViewById(R.id.acceptZipCode);
         year = (EditText) findViewById(R.id.acceptYear);
@@ -41,7 +43,11 @@ public class CarDetails extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String addressText, zipCodeText, yearText, makeText, modelText, transmissionText, odometerText, trimText, styleText;
+                String addressText, zipCodeText, yearText, makeText, modelText, transmissionText, odometerText, trimText, styleText, fNameText, lNameText;
+
+
+                fNameText = fName.getText().toString();
+                lNameText = lName.getText().toString();
                 addressText = address.getText().toString();
                 zipCodeText = zipCode.getText().toString();
                 yearText = year.getText().toString();
@@ -53,6 +59,9 @@ public class CarDetails extends AppCompatActivity {
                 styleText = style.getText().toString();
 
                 Bundle bundle = new Bundle();
+
+                bundle.putString("fName", fNameText);
+                bundle.putString("lName", lNameText);
                 bundle.putString("address",addressText);
                 bundle.putString("zipcode",zipCodeText);
                 bundle.putString("year",yearText);

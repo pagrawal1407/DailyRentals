@@ -31,8 +31,8 @@ public class CarChoice extends AppCompatActivity {
         textView.setText(data.make + " " + data.model);
 
         ImageView carImage = (ImageView) findViewById(R.id.car_image);
-        byte[] decodedImage = Base64.decode(data.image, Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
-        carImage.setImageBitmap(decodedByte);
+//        byte[] decodedImage = Base64.decode(data.image, Base64.DEFAULT);
+  //      Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
+    //    carImage.setImageBitmap(decodedByte);
     }
 }

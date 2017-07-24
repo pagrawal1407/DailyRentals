@@ -54,7 +54,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="Enter your license plate number"
+            android:hint="Enter your license plate state"
             android:id="@+id/acceptLicensePlateState"/>
 
         <TextView
@@ -76,8 +76,103 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Car description"
+            android:text="Driving License Information"
             android:layout_below="@+id/separatorLine1"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/drivingLicenseText"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Driving License Number"
+            android:layout_below="@+id/drivingLicenseText"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/drivingLicenseNumberText"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/drivingLicenseNumberText"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Enter your driving license number"
+            android:id="@+id/drivingLicenseNumber"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Driving License Issuing State"
+            android:layout_below="@+id/drivingLicenseNumber"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/drivingLicenseStateText"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/drivingLicenseStateText"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Enter your driving license state"
+            android:id="@+id/drivingLicenseState"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Driving License Issuing Country"
+            android:layout_below="@+id/drivingLicenseState"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/drivingLicenseCountryText"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/drivingLicenseCountryText"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Enter your driving license country"
+            android:id="@+id/drivingLicenseCountry"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Driving License Date of Birth"
+            android:layout_below="@+id/drivingLicenseCountry"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/drivingLicenseDOBText"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/drivingLicenseDOBText"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Enter your driving license date of birth"
+            android:id="@+id/drivingLicenseDOB"
+            android:ems="10"
+            android:inputType="date" />
+
+        <View android:background="#a8a8a6"
+            android:layout_width = "match_parent"
+            android:layout_height="0.75dp"
+            android:layout_below="@+id/drivingLicenseDOB"
+            android:id="@+id/separatorLine2"
+            android:layout_marginTop="25dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Car description"
+            android:layout_below="@+id/separatorLine2"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
             android:id="@+id/carDescriptionText"/>

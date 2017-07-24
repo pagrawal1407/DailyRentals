@@ -39,6 +39,58 @@
             android:textColor="#000000"
             android:layout_below="@+id/topImage"
             android:layout_marginTop="20dp"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carLocationText"
+            android:id="@+id/nameLayoutText">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fname"
+                android:textSize="11dp"
+                android:id="@+id/fNameText"
+                android:layout_weight="1"
+                android:layout_below="@+id/carLocationText"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lname"
+                android:textSize="11dp"
+                android:id="@+id/lNameText"
+                android:layout_weight="1"
+                android:layout_below="@+id/carLocationText"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameLayoutText"
+            android:id="@+id/nameLayout">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/fname"
+                android:id="@+id/fName"
+                android:layout_weight="1"
+                android:layout_below="@+id/carLocationText"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/lname"
+                android:id="@+id/lName"
+                android:layout_weight="1"
+                android:layout_below="@+id/carLocationText"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,7 +98,7 @@
             android:text="@string/address"
             android:textSize="11dp"
             android:id="@+id/enterAddress"
-            android:layout_below="@+id/carLocationText"
+            android:layout_below="@+id/nameLayout"
             android:layout_marginTop="10dp" />
 
         <EditText

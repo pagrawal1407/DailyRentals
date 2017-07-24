@@ -47,13 +47,18 @@ public class DisplaySearchResults extends AppCompatActivity {
 
     private void volleyCall(String query) {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String URL = "http://45.79.76.22:9080/EasyRentals/car/getCarList/"+ query;
+        String URL = "";
+        if (query != "") {
+            URL = "http://45.79.76.22:9080/EasyRentals/car/getCarList/" + query;
+        }
+        else
+            URL = "http://45.79.76.22:9080/EasyRentals/car/getCarList";
         final TextView nullServerData = (TextView) findViewById(R.id.serverData);
         Log.d("Search query","Query: " + query);
 
         JsonArrayRequest postRequest = new JsonArrayRequest(Request.Method.GET, URL, null,
                 new Response.Listener<JSONArray>() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            //@RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onResponse(JSONArray response) {
                 Log.i("response data", response.toString());
@@ -81,13 +86,14 @@ public class DisplaySearchResults extends AppCompatActivity {
                             data.carDescription = singleItem.getString("carDes");
                             data.advanceNotice = singleItem.getString("advNotice");
                             data.trim = singleItem.getString("trim");
-                            data.image = singleItem.getString("image");
-                            data.issuingCountry = singleItem.getString("issuing_Country");
-                            //data.issuingState = singleItem.getString("issuing_State");
-                            data.licenseNumber = singleItem.getString("licenseNum");
-                            data.licenseState = singleItem.getString("licenseState");
-                            //data.lName = singleItem.getString("lname");
-                            //data.fName = singleItem.getString("fname");
+                            //data.image = singleItem.getString("carPic");
+                            //data.licenseNumber = singleItem.getString("licenseNo");
+                            //data.issuingCountry = singleItem.getString("issuingCountry");
+                            //data.issuingState = singleItem.getString("issuingState");
+                            //data.licensePlateNumber = singleItem.getString("licensePlateNum");
+                            //data.licenseState = singleItem.getString("licenseState");
+                            //data.lName = singleItem.getString("lNameOnLic");
+                            //data.fName = singleItem.getString("fNameOnLic");
                             data.minimumDuration = singleItem.getString("shortPT");
                             data.longestDistance = singleItem.getString("longPT");
                             list.add(data);

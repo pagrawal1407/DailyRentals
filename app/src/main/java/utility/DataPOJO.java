@@ -16,15 +16,16 @@ public class DataPOJO {
     public double odometer;
     public String style;
     public String carDescription;
+    public String licenseNumber;
     public String issuingState;
+    public String issuingCountry;
     public String advanceNotice;
     public String trim;
     public String fName;
     public String lName;
     public String image;
-    public String licenseNumber;
+    public String licensePlateNumber;
     public String licenseState;
-    public String issuingCountry;
     public String longestDistance;
     public String minimumDuration;
 }

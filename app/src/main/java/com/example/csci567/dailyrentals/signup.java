@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Patterns.*;
 
@@ -25,6 +26,8 @@ import java.util.Map;
 
 public class signup extends AppCompatActivity {
 
+    public TextView memberText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,17 @@ public class signup extends AppCompatActivity {
         lname = (EditText) findViewById(R.id.lastname);
         email = (EditText) findViewById(R.id.signup_email);
         passwd = (EditText) findViewById(R.id.signup_password);
+
+        memberText = (TextView)findViewById(R.id.membertext);
+
+        memberText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newSignupActivity = new Intent(getApplicationContext(),signin.class);
+                startActivity(newSignupActivity);
+                finish();
+            }
+        });
 
         signup = (Button) findViewById(R.id.signup_button);
         signup.setOnClickListener(new View.OnClickListener() {

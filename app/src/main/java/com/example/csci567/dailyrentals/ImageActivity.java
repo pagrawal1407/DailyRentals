@@ -27,6 +27,7 @@ public class ImageActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 10000;
     public Button uploadButton;
     public ImageView imageDisplay;
+    String selectedPath;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -73,8 +74,6 @@ public class ImageActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        String selectedPath;
-        Bitmap image = null;
         imageDisplay = (ImageView) findViewById(R.id.image_display);
         if (resultCode == RESULT_OK) {
             Uri selectedImage = null;
@@ -83,35 +82,21 @@ public class ImageActivity extends AppCompatActivity {
                 selectedImage = data.getData();
                 selectedPath = getPath(selectedImage);
                 Toast.makeText(this, "Selected Path: " + selectedPath, Toast.LENGTH_LONG).show();
-
-
-                try {
-                    image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
                 Picasso.with(getApplicationContext()).load(selectedImage).fit().centerCrop().into(imageDisplay);
                 //uploadImage(image);
             }
         }
 
         Button next = (Button) findViewById(R.id.next_button);
-        final Bitmap finalImage = image;
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent newActivityintent = new Intent(ImageActivity.this, DetailsActivity.class);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                finalImage.compress(Bitmap.CompressFormat.JPEG, 25, baos);
-                byte[] imageBytes = baos.toByteArray();
-                String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-                bundle.putString("bitmap", encodedImage);
+                bundle.putString("imagePath", selectedPath);
                 newActivityintent.putExtras(bundle);
                 startActivity(newActivityintent);
             }
         });
-
     }
 
     private String getPath(Uri selectedImage) {

@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -38,20 +39,32 @@ public class WelcomePage extends AppCompatActivity {
 
         setViewPager();
         listYourCar();
+
+        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+            @Override
+            public void onSearchViewShown() {
+                View view = WelcomePage.this.getCurrentFocus();
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+            }
+
+            @Override
+            public void onSearchViewClosed() {
+
+            }
+        });
+
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
                 Intent newActivity = new Intent(getApplicationContext(), DisplaySearchResults.class);
-                if(query != null) {
-                    newActivity.putExtra("search_query", query);
-                    View view = WelcomePage.this.getCurrentFocus();
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                    inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                    startActivity(newActivity);
-                }
-                else
-                    Toast.makeText(getApplicationContext(),"Please enter search string first",Toast.LENGTH_SHORT).show();
+                newActivity.putExtra("search_query", query);
+                View view = WelcomePage.this.getCurrentFocus();
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                startActivity(newActivity);
+
                 return false;
             }
 

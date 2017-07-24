@@ -50,6 +50,7 @@ public class signin extends Activity {
             public void onClick(View v) {
                 Intent newSignupActivity = new Intent(getApplicationContext(),signup.class);
                 startActivity(newSignupActivity);
+                finish();
             }
         });
 
