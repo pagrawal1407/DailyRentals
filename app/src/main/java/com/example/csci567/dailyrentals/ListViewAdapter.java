@@ -25,17 +25,18 @@ public class ListViewAdapter extends BaseAdapter {
     ArrayList<DataPOJO> mlist = new ArrayList<DataPOJO>();
     Context mcontext;
 
-    static class ViewHolder{
+    static class ViewHolder {
         public TextView title;
         public TextView location;
         public TextView zipcode;
         public TextView year;
     }
 
-    public ListViewAdapter(ArrayList<DataPOJO> list, Context context){
+    public ListViewAdapter(ArrayList<DataPOJO> list, Context context) {
         this.mlist = list;
         this.mcontext = context;
     }
+
     @Override
     public int getCount() {
         return mlist.size();
@@ -55,9 +56,9 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView = convertView;
 
-        if(rowView == null){
+        if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(R.layout.list_view_item,null);
+            rowView = inflater.inflate(R.layout.list_view_item, null);
 
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.title = (TextView) rowView.findViewById(R.id.carTitle);
@@ -69,25 +70,34 @@ public class ListViewAdapter extends BaseAdapter {
 
         ViewHolder holder = (ViewHolder) rowView.getTag();
         DataPOJO data = mlist.get(position);
-        String title = data.make + " " + data.model;
-        holder.title.setText(title);
-
-        String year = Integer.toString(data.year);
-        holder.year.setText(year);
-
-        String zipcode = Integer.toString(data.zipcode);
-        holder.zipcode.setText(zipcode);
-
-        Geocoder gc = new Geocoder(mcontext);
-        List <Address> addList = null;
-        try {
-            addList = gc.getFromLocation(data.latitude, data.longitude,1);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!data.model.equals("") && !data.make.equals("")) {
+            String title = data.make + " " + data.model;
+            holder.title.setText(title);
         }
-        Address add = addList.get(0);
-        String location = add.getLocality();
-        holder.location.setText(location);
+
+        if (data.year != 0) {
+            String year = Integer.toString(data.year);
+            holder.year.setText(year);
+        }
+
+        if (data.zipcode != 0) {
+            String zipcode = Integer.toString(data.zipcode);
+            holder.zipcode.setText(zipcode);
+        }
+
+        if (data.latitude != 0 && data.longitude != 0) {
+            Geocoder gc = new Geocoder(mcontext);
+            List<Address> addList = null;
+            try {
+                addList = gc.getFromLocation(data.latitude, data.longitude, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Address add = addList.get(0);
+            String location = add.getLocality();
+            holder.location.setText(location);
+
+        }
         return rowView;
     }
 }

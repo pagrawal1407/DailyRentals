@@ -28,7 +28,9 @@ public class CarChoice extends AppCompatActivity {
         }
         DataPOJO data = new Gson().fromJson(jsonmyobject, DataPOJO.class);
         TextView textView = (TextView) findViewById(R.id.datapojo_display);
-        textView.setText(data.make + " " + data.model);
+
+        if (!data.model.equals("") && !data.make.equals(""))
+            textView.setText(data.make + " " + data.model);
 
         ImageView carImage = (ImageView) findViewById(R.id.car_image);
 //        byte[] decodedImage = Base64.decode(data.image, Base64.DEFAULT);
