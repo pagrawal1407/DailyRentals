@@ -13,14 +13,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ImageActivity extends AppCompatActivity {
     Bundle bundle;
@@ -72,15 +82,15 @@ public class ImageActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         imageDisplay = (ImageView) findViewById(R.id.image_display);
         if (resultCode == RESULT_OK) {
-            Uri selectedImage = null;
+            Uri selectedImage;
 
             if (requestCode == 999) {
                 selectedImage = data.getData();
-                selectedPath = getPath(selectedImage);
+                selectedPath = getRealPath(selectedImage);
                 Toast.makeText(this, "Selected Path: " + selectedPath, Toast.LENGTH_LONG).show();
                 Picasso.with(getApplicationContext()).load(selectedImage).fit().centerCrop().into(imageDisplay);
                 //uploadImage(image);
@@ -95,15 +105,53 @@ public class ImageActivity extends AppCompatActivity {
                 bundle.putString("imagePath", selectedPath);
                 newActivityintent.putExtras(bundle);
                 startActivity(newActivityintent);
+
+/*                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        File f = new File(data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH));
+                        String content_type = getMimeType(f.getPath());
+
+                        String file_path = f.getAbsolutePath();
+                        OkHttpClient client = new OkHttpClient();
+                        RequestBody fileBody = RequestBody.create(MediaType.parse(content_type),f);
+
+                        RequestBody requestBody = new MultipartBody.Builder()
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("Type", content_type)
+                                .addFormDataPart("uploaded_file",file_path.substring(file_path.lastIndexOf('/') + 1), fileBody)
+                                .build();
+
+                        Request request = new Request.Builder()
+                                .url("http://45.79.76.22:9080/EasyRentals/image/upload")
+                                .post(requestBody)
+                                .build();
+
+
+                        try {
+                            Response response = client.newCall(request).execute();
+
+                            if (!response.isSuccessful()){
+                                throw new IOException("Error:"+response);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                t.start();*/
             }
         });
     }
 
-    private String getPath(Uri selectedImage) {
-        String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = managedQuery(selectedImage, projection, null, null, null);
-        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(columnIndex);
+    private String getRealPath(Uri selectedImage) {
+        return ImageFilePath.getPath(this, selectedImage);
     }
+
+    private String getMimeType(String path) {
+        String extension = MimeTypeMap.getFileExtensionFromUrl(path);
+        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+    }
+
 }
