@@ -34,10 +34,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Handler;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+import okhttp3.internal.framed.FrameReader;
 import utility.DataPOJO;
 
 public class CarChoice extends AppCompatActivity {
+    private android.os.Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +56,7 @@ public class CarChoice extends AppCompatActivity {
         if (bundle != null) {
             jsonmyobject = bundle.getString("DataPOJO object");
         }
-        DataPOJO data = new Gson().fromJson(jsonmyobject, DataPOJO.class);
+        final DataPOJO data = new Gson().fromJson(jsonmyobject, DataPOJO.class);
         TextView textView = (TextView) findViewById(R.id.datapojo_display);
 
         //Toast.makeText(this,data.make + " " + data.model, Toast.LENGTH_SHORT).show();
@@ -84,6 +91,7 @@ public class CarChoice extends AppCompatActivity {
         final RequestQueue queue = Volley.newRequestQueue(this);
         final String URL = "http://45.79.76.22:9080/EasyRentals/image/download";
 
+        handler = new android.os.Handler();
         final Map<String,String> jsonparams = new HashMap<String, String>();
         Toast.makeText(getApplicationContext(), data.licensePlateNumber, Toast.LENGTH_LONG).show();
         jsonparams.put("fileName",data.licensePlateNumber);
@@ -93,42 +101,45 @@ public class CarChoice extends AppCompatActivity {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.GET, URL, new JSONObject(jsonparams),
-                        new Response.Listener<JSONObject>() {
-                            //@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                Log.i("response data", response.toString());
-                                Log.i("JSONObject data", response.toString());
-                                try {
-                                    fileName[0] = response.getString("name");
-                                    image[0] = response.getString("data");
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
+                OkHttpClient client = new OkHttpClient();
+               // RequestBody fileBody = RequestBody.create(MediaType.parse(content_type),bos.toByteArray());
+                String URL = "http://45.79.76.22:9080/EasyRentals/image/download" + "?fileName="+data.licensePlateNumber;
 
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Error in request: "+ error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+                okhttp3.Request request = new okhttp3.Request.Builder()
+                        .url(URL)
+                        .build();
 
-                queue.add(postRequest);
+                okhttp3.Response response = null;
 
-                TextView imageName = (TextView) findViewById(R.id.carImageName);
-                imageName.setText(fileName[0]);
+                try {
+                    response = client.newCall(request).execute();
+                    JSONObject jsonObject = new JSONObject(response.body().string());
+                    fileName[0] = jsonObject.getString("name");
+                    image[0] = jsonObject.getString("data");
 
-                ImageView carImage = (ImageView) findViewById(R.id.car_image);
-                byte[] decodedImage = Base64.decode(image[0], Base64.DEFAULT);
-                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
-                carImage.setImageBitmap(decodedByte);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView imageName = (TextView) findViewById(R.id.carImageName);
+                            imageName.setText(fileName[0]);
+
+                            ImageView carImage = (ImageView) findViewById(R.id.car_image);
+                            byte[] decodedImage = Base64.decode(image[0], Base64.DEFAULT);
+                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
+                            carImage.setImageBitmap(decodedByte);
+                        }
+                    });
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
         t.start();
-
 
     }
 }
