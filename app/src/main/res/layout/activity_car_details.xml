@@ -150,11 +150,12 @@
             android:layout_below="@+id/carTypeText"
             android:layout_marginTop="10dp" />
 
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter year"
             android:layout_below="@+id/yearText"
+            android:hint="Enter year"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:id="@+id/acceptYear"/>
 
         <TextView
@@ -198,11 +199,12 @@
             android:layout_below="@+id/acceptModel"
             android:layout_marginTop="10dp" />
 
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Transmission"
             android:layout_below="@+id/transmissionText"
+            android:hint="Enter type of transmission"
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
             android:id="@+id/acceptTransmission"/>
 
         <TextView
@@ -246,11 +248,12 @@
             android:layout_below="@+id/acceptTrim"
             android:layout_marginTop="10dp" />
 
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Style"
             android:layout_below="@+id/styleText"
+            android:hint="Enter value of Style"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:id="@+id/acceptStyle"/>
 
         <View android:background="#a8a8a6"

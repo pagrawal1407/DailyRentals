@@ -156,7 +156,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="Enter your driving license date of birth"
+            android:hint="Enter your driving license date of birth (in MM/DD/YYYY)"
             android:id="@+id/drivingLicenseDOB"
             android:ems="10"
             android:inputType="date" />
@@ -212,7 +212,7 @@
             android:layout_width="175dp"
             android:layout_height="70dp"
             android:layout_below="@+id/featuresText"
-            android:layout_marginLeft="15dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
             android:checked="false"
             android:textOff="Hybrid"
@@ -225,7 +225,7 @@
             android:checked="false"
             android:textOff="GPS"
             android:textOn="GPS"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
             android:id="@+id/GPSToggle"/>
@@ -237,7 +237,7 @@
             android:checked="false"
             android:textOff="Audio Input"
             android:textOn="Audio Input"
-            android:layout_marginLeft="15dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
             android:id="@+id/AudioInputToggle"/>
 
@@ -247,7 +247,7 @@
             android:layout_height="70dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/GPSToggle"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:checked="false"
             android:textOff="Bike Rack"
@@ -260,7 +260,7 @@
             android:checked="false"
             android:textOff="Ski Rack"
             android:textOn="Ski Rack"
-            android:layout_marginLeft="15dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
             android:id="@+id/SkiRackToggle"/>
 
@@ -271,7 +271,7 @@
             android:checked="false"
             android:textOff="All-wheel drive"
             android:textOn="All-wheel drive"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
             android:id="@+id/allWheelDriveToggle"/>
@@ -283,7 +283,7 @@
             android:checked="false"
             android:textOff="Convertible"
             android:textOn="Convertible"
-            android:layout_marginLeft="15dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
             android:id="@+id/convertibleToggle"/>
 
@@ -294,7 +294,7 @@
             android:checked="false"
             android:textOff="Bluetooth"
             android:textOn="Bluetooth"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
             android:id="@+id/bluetoothToggle"/>
@@ -306,7 +306,7 @@
             android:checked="false"
             android:textOff="Pet friendly"
             android:textOn="Pet friendly"
-            android:layout_marginLeft="15dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
             android:id="@+id/petFriendlyToggle"/>
 
@@ -317,7 +317,7 @@
             android:checked="false"
             android:textOff="Child seat"
             android:textOn="Child seat"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
             android:id="@+id/childSeatToggle"/>
@@ -329,7 +329,7 @@
             android:checked="false"
             android:textOff="USB input"
             android:textOn="USB input"
-            android:layout_marginLeft="15dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
             android:id="@+id/USBInputToggle"/>
 
@@ -340,7 +340,7 @@
             android:checked="false"
             android:textOff="Toll pass"
             android:textOn="Toll pass"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
             android:id="@+id/tollPassToggle"/>
@@ -352,7 +352,7 @@
             android:checked="false"
             android:textOff="Snow tires or chains"
             android:textOn="Snow tires or chains"
-            android:layout_marginLeft="15dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
             android:id="@+id/snowTireToggle"/>
 
@@ -363,7 +363,7 @@
             android:checked="false"
             android:textOff="Heated seats"
             android:textOn="Heated seats"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
             android:id="@+id/heatedSeatsToggle"/>
@@ -375,7 +375,7 @@
             android:checked="false"
             android:textOff="Sunroof"
             android:textOn="Sunroof"
-            android:layout_marginLeft="15dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
             android:id="@+id/sunroofToggle"/>
 

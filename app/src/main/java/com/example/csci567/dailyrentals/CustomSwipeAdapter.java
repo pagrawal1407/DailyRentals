@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class CustomSwipeAdapter extends PagerAdapter {
 
-    private int[] imageResources = {R.drawable.th, R.drawable.th1, R.drawable.th2, R.drawable.th3, R.drawable.th4, R.drawable.th5, R.drawable.th6, R.drawable.th7};
+    private int[] imageResources = { R.drawable.th1, R.drawable.th2, R.drawable.th3, R.drawable.th4, R.drawable.th5};
     private Context ctx;
     private LayoutInflater layoutInflater;
 
@@ -47,6 +47,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
 
         return itemView;
     }
+
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {

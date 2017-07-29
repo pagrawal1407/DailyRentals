@@ -10,25 +10,56 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="500dp"
-        android:id="@+id/car_image"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/datapojo_display"
-        android:textSize="30sp"
-        android:text="dataPOJO value"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/car_image"
-        android:layout_marginTop="15dp"/>
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="500dp"
+            android:id="@+id/car_image"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:id="@+id/carImageName"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/car_image"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/datapojo_display"
+            android:textSize="30sp"
+            android:text="dataPOJO value"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/carImageName"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/carChoiceName"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/datapojo_display"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/carChoiceLocation"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/carChoiceName"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/carChoiceDetails"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/carChoiceLocation"
+            android:layout_marginTop="15dp"/>
     </RelativeLayout>
 </ScrollView>

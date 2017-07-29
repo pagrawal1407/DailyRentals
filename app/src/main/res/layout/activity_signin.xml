@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e2dfdf"
+    android:background="@drawable/a9"
     tools:context="com.example.csci567.dailyrentals.signin">
 
 
@@ -14,12 +14,12 @@
         android:id="@+id/signinpage"
         android:text="@string/signin"
         android:textSize="40dp"
-        android:textColor="#f786ca0f"
+        android:textColor="#f763960b"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.10" />
+        app:layout_constraintVertical_bias="0.20" />
 
     <EditText
         android:layout_width="0dp"
@@ -66,7 +66,7 @@
         android:layout_marginRight="50dp"
         android:text="@string/signin"
         android:id="@+id/signin_button"
-        android:background="#ae86ca0f"
+        android:background="#f763960b"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -92,9 +92,17 @@ public class WelcomePage extends AppCompatActivity {
         pageView3 = (ViewPager) findViewById(R.id.viewpager3);
         adapter = new CustomSwipeAdapter(this);
         pageView1.setAdapter(adapter);
+        pageView1.setClipToPadding(false);
+        pageView1.setPadding(140,0,140,0);
         pageView1.setPageMargin(30);
         pageView2.setAdapter(adapter);
+        pageView2.setClipToPadding(false);
+        pageView2.setPadding(140,0,140,0);
+        pageView2.setPageMargin(30);
         pageView3.setAdapter(adapter);
+        pageView3.setClipToPadding(false);
+        pageView3.setPadding(140,0,140,0);
+        pageView3.setPageMargin(30);
     }
 
     @Override

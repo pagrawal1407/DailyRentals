@@ -49,7 +49,7 @@ public class DisplaySearchResults extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String URL;
         Log.d("Search query","Query: " + query);
-        if (query.equals("") ) {
+        if (!query.equals("") ) {
             URL = "http://45.79.76.22:9080/EasyRentals/car/getCarList/" + query;
         }
         else
@@ -69,28 +69,28 @@ public class DisplaySearchResults extends AppCompatActivity {
                     for (int i = 0; i < jArray.length(); i++){
                         JSONObject singleItem = jArray.getJSONObject(i);
                         DataPOJO data = new DataPOJO();
-                        data.zipcode = singleItem.optInt("zipcode");
-                        data.latitude = singleItem.optDouble("latitude");
-                        data.longitude = singleItem.optDouble("longitude");
-                        data.year = singleItem.optInt("year");
-                        data.make = singleItem.optString("make");
-                        data.model = singleItem.optString("model");
-                        data.transmission = singleItem.optString("transmission");
-                        data.odometer = singleItem.optDouble("odometer");
-                        data.style = singleItem.optString("style");
-                        data.carDescription = singleItem.optString("carDes");
-                        data.advanceNotice = singleItem.optString("advNotice");
-                        data.trim = singleItem.optString("trim");
-                        //data.image = singleItem.optString("carPic");
-                        //data.licenseNumber = singleItem.optString("licenseNo");
-                        //data.issuingCountry = singleItem.optString("issuingCountry");
-                        //data.issuingState = singleItem.optString("issuingState");
-                        //data.licensePlateNumber = singleItem.optString("licensePlateNum");
-                        //data.licenseState = singleItem.optString("licenseState");
-                        //data.lName = singleItem.optString("lNameOnLic");
-                        //data.fName = singleItem.optString("fNameOnLic");
-                        data.minimumDuration = singleItem.optString("shortPT");
-                        data.longestDistance = singleItem.optString("longPT");
+                        data.zipcode = singleItem.optInt("zipcode", 0);
+                        data.latitude = singleItem.optDouble("latitude", 0);
+                        data.longitude = singleItem.optDouble("longitude", 0);
+                        data.year = singleItem.optInt("year", 0);
+                        data.make = singleItem.optString("make", "make");
+                        data.model = singleItem.optString("model", "model");
+                        data.transmission = singleItem.optString("transmission", "transmission");
+                        data.odometer = singleItem.optDouble("odometer", 0);
+                        data.style = singleItem.optString("style", "style");
+                        data.carDescription = singleItem.optString("carDes", "carDes");
+                        data.advanceNotice = singleItem.optString("advNotice", "advNotice");
+                        data.trim = singleItem.optString("trim", "trim");
+                        //data.image = singleItem.optString("carPic", "null");
+                        data.licenseNumber = singleItem.optString("licenseNum", "null");
+                        data.issuingCountry = singleItem.optString("issuingCountry", "null");
+                        data.issuingState = singleItem.optString("issuingState", "null");
+                        data.licensePlateNumber = singleItem.optString("licensePlateNum", "null");
+                        data.licenseState = singleItem.optString("licenseState", "null");
+                        data.lName = singleItem.optString("lNameOnLic", "fname");
+                        data.fName = singleItem.optString("fNameOnLic", "lname");
+                        data.minimumDuration = singleItem.optString("shortPT", "minimumDuration");
+                        data.longestDistance = singleItem.optString("longPT", "longestDistance");
                         list.add(data);
                     }
                 } catch (JSONException e) {

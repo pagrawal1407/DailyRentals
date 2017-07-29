@@ -106,52 +106,13 @@ public class ImageActivity extends AppCompatActivity {
                 newActivityintent.putExtras(bundle);
                 startActivity(newActivityintent);
 
-/*                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        File f = new File(data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH));
-                        String content_type = getMimeType(f.getPath());
 
-                        String file_path = f.getAbsolutePath();
-                        OkHttpClient client = new OkHttpClient();
-                        RequestBody fileBody = RequestBody.create(MediaType.parse(content_type),f);
-
-                        RequestBody requestBody = new MultipartBody.Builder()
-                                .setType(MultipartBody.FORM)
-                                .addFormDataPart("Type", content_type)
-                                .addFormDataPart("uploaded_file",file_path.substring(file_path.lastIndexOf('/') + 1), fileBody)
-                                .build();
-
-                        Request request = new Request.Builder()
-                                .url("http://45.79.76.22:9080/EasyRentals/image/upload")
-                                .post(requestBody)
-                                .build();
-
-
-                        try {
-                            Response response = client.newCall(request).execute();
-
-                            if (!response.isSuccessful()){
-                                throw new IOException("Error:"+response);
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-                t.start();*/
             }
         });
     }
 
     private String getRealPath(Uri selectedImage) {
         return ImageFilePath.getPath(this, selectedImage);
-    }
-
-    private String getMimeType(String path) {
-        String extension = MimeTypeMap.getFileExtensionFromUrl(path);
-        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
     }
 
 }

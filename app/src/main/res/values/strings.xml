@@ -13,4 +13,17 @@
     <string name="address">Enter address</string>
     <string name="zipcode">zip code</string>
     <string name="search_title">Search</string>
+
+    <string-array name="transmissionArray">
+        <item> Manual </item>
+        <item> Automatic </item>
+    </string-array>
+
+    <string-array name="styleArray">
+        <item> Hatchback </item>
+        <item> Compact Sedan </item>
+        <item> Full Size Sedan </item>
+        <item> Minivan </item>
+        <item> Truck </item>
+    </string-array>
 </resources>

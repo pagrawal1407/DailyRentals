@@ -91,7 +91,7 @@ public class signin extends Activity {
                         String msg = null;
                         try{
                             msg = (String) response.get("value");
-                            Log.i("Value of msg: ",msg);
+                            Log.i("Value of msg: ", msg);
                         }catch (JSONException e){
                             e.printStackTrace();
                         }

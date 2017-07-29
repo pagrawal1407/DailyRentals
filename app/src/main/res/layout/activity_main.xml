@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcomeimage"
+    android:background="@drawable/a13"
 
     tools:context="com.example.csci567.dailyrentals.MainActivity">
 
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintVertical_bias="0.82"
+        app:layout_constraintVertical_bias="0.775"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp" />
 
