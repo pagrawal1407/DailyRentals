@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -21,8 +22,9 @@ import java.util.Map;
 public class CarDetails extends AppCompatActivity {
 
     private Button next;
-    private EditText address, zipCode, make, model, odometer, trim, style, fName, lName;
+    private EditText address, zipCode, make, model, odometer, trim, style, fName, lName, city, state;
     private Spinner carYear, carTransmission, carStyle;
+    private CheckBox salvageTitle, GPS, hybrid, petFriendly, bluetooth, audioPlayer, sunRoof;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,18 @@ public class CarDetails extends AppCompatActivity {
         carStyle.setAdapter(adapterStyle);
 
         intitializeEditText();
+        initializeCheckBox();
         onNextPressed();
+    }
+
+    private void initializeCheckBox() {
+        salvageTitle = (CheckBox) findViewById(R.id.salvageTitleCheckBox);
+        GPS = (CheckBox) findViewById(R.id.GPSCheckBox);
+        hybrid = (CheckBox) findViewById(R.id.HybridCheckBox);
+        petFriendly = (CheckBox) findViewById(R.id.PetfriendlyCheckBox);
+        bluetooth = (CheckBox) findViewById(R.id.BluetoothCheckBox);
+        audioPlayer = (CheckBox) findViewById(R.id.AudioCheckBox);
+        sunRoof = (CheckBox) findViewById(R.id.sunroofCheckBox);
     }
 
     private void onNextPressed() {
@@ -105,12 +118,14 @@ public class CarDetails extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String addressText, zipCodeText, yearText, makeText, modelText, transmissionText, odometerText, trimText, styleText, fNameText, lNameText;
-
+                String addressText, zipCodeText, makeText, modelText, odometerText, trimText, styleText, fNameText, lNameText, cityText, stateText;
+                String GPSValue, hybridValue, petFriendlyValue, bluetoothValue, audioPlayerValue, sunRoofValue;
 
                 fNameText = fName.getText().toString();
                 lNameText = lName.getText().toString();
                 addressText = address.getText().toString();
+                cityText = city.getText().toString();
+                stateText = state.getText().toString();
                 zipCodeText = zipCode.getText().toString();
                 //yearText = year.getText().toString();
                 makeText = make.getText().toString();
@@ -119,6 +134,36 @@ public class CarDetails extends AppCompatActivity {
                 odometerText = odometer.getText().toString();
                 trimText = trim.getText().toString();
                 //styleText = style.getText().toString();
+
+                if (GPS.isChecked()){
+                    GPSValue = "true";
+                }
+                else GPSValue = "false";
+
+                if (hybrid.isChecked()){
+                    hybridValue = "true";
+                }
+                else hybridValue = "false";
+
+                if (petFriendly.isChecked()){
+                    petFriendlyValue = "true";
+                }
+                else petFriendlyValue = "false";
+
+                if (bluetooth.isChecked()){
+                    bluetoothValue = "true";
+                }
+                else bluetoothValue = "false";
+
+                if (audioPlayer.isChecked()){
+                    audioPlayerValue = "true";
+                }
+                else audioPlayerValue = "false";
+
+                if (sunRoof.isChecked()){
+                    sunRoofValue = "true";
+                }
+                else sunRoofValue = "false";
 
                 Bundle bundle = new Bundle();
 
@@ -135,10 +180,23 @@ public class CarDetails extends AppCompatActivity {
                 bundle.putString("odometer", odometerText);
                 bundle.putString("trim", trimText);
                 bundle.putString("style", style[0]);
+                bundle.putString("city", cityText);
+                bundle.putString("state", stateText);
+                bundle.putString("gps", GPSValue);
+                bundle.putString("hybrid", hybridValue);
+                bundle.putString("bluetooth", bluetoothValue);
+                bundle.putString("sunRoof", sunRoofValue);
+                bundle.putString("petFriendly", petFriendlyValue);
+                bundle.putString("audioPlayer", audioPlayerValue);
 
-                Intent intent = new Intent(getBaseContext(), AvailabilityActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if(salvageTitle.isChecked()) {
+
+                    Intent intent = new Intent(getBaseContext(), AvailabilityActivity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "Your car title must not be salvaged.", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -152,6 +210,8 @@ public class CarDetails extends AppCompatActivity {
         model = (EditText) findViewById(R.id.acceptModel);
         odometer = (EditText) findViewById(R.id.acceptOdometer);
         trim = (EditText) findViewById(R.id.acceptTrim);
+        city = (EditText) findViewById(R.id.acceptCity);
+        state = (EditText) findViewById(R.id.acceptState);
         //style = (EditText) findViewById(R.id.acceptStyle);
     }
 }

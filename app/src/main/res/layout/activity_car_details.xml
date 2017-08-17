@@ -102,11 +102,34 @@
             android:layout_marginTop="10dp" />
 
         <EditText
+            android:id="@+id/acceptAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your address here"
             android:layout_below="@+id/enterAddress"
-            android:id="@+id/acceptAddress"/>
+            android:hint="Enter your address here"
+            android:inputType="textMultiLine" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/acceptAddress"
+            android:id="@+id/linearlayout">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter city here"
+                android:layout_below="@+id/enterAddress"
+                android:layout_weight="1"
+                android:id="@+id/acceptCity"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter state here"
+                android:layout_below="@+id/enterAddress"
+                android:layout_weight="1"
+                android:id="@+id/acceptState"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -114,15 +137,16 @@
             android:text="@string/zipcode"
             android:textSize="11dp"
             android:id="@+id/zipcode"
-            android:layout_below="@+id/acceptAddress"
+            android:layout_below="@+id/linearlayout"
             android:layout_marginTop="10dp" />
 
         <EditText
+            android:id="@+id/acceptZipCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Zip code"
             android:layout_below="@+id/zipcode"
-            android:id="@+id/acceptZipCode"/>
+            android:hint="Enter Zip code"
+            android:inputType="number" />
 
         <View android:background="#a8a8a6"
             android:layout_width = "match_parent"
@@ -263,12 +287,87 @@
             android:id="@+id/separatorLine1"
             android:layout_marginTop="25dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select the features in your car"
+            android:id="@+id/FeatureText"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_below="@+id/separatorLine1"
+            android:layout_marginTop="20dp"/>
+
+        <CheckBox
+            android:id="@+id/GPSCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPS"
+            android:layout_below="@+id/FeatureText"
+            android:layout_marginTop="15dp"/>
+
+        <CheckBox
+            android:id="@+id/HybridCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hybrid"
+            android:layout_below="@+id/FeatureText"
+            android:layout_toRightOf="@+id/GPSCheckBox"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"/>
+
+        <CheckBox
+            android:id="@+id/PetfriendlyCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pet Friendly"
+            android:layout_below="@+id/FeatureText"
+            android:layout_toRightOf="@+id/HybridCheckBox"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"/>
+
+        <CheckBox
+            android:id="@+id/BluetoothCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bluetooth"
+            android:layout_below="@+id/GPSCheckBox"
+            android:layout_marginTop="15dp"/>
+
+        <CheckBox
+            android:id="@+id/AudioCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Audio Player"
+            android:layout_toRightOf="@id/BluetoothCheckBox"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/GPSCheckBox"
+            android:layout_marginTop="15dp"/>
+
+        <CheckBox
+            android:id="@+id/sunroofCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SunRoof"
+            android:layout_below="@+id/GPSCheckBox"
+            android:layout_toRightOf="@+id/AudioCheckBox"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"/>
+
+
+        <View android:background="#a8a8a6"
+            android:layout_width = "match_parent"
+            android:layout_height="0.75dp"
+            android:layout_below="@+id/sunroofCheckBox"
+            android:id="@+id/separatorLine2"
+            android:layout_marginTop="25dp" />
+
+
         <CheckBox
             android:id="@+id/salvageTitleCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My car has never had a branded or salvage title"
-            android:layout_below="@+id/separatorLine1"
+            android:layout_below="@+id/separatorLine2"
             android:layout_marginTop="15dp"/>
 
         <Button

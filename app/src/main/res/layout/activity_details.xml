@@ -47,14 +47,14 @@
             android:layout_marginLeft="15dp"
             android:id="@+id/licenseStateText"/>
 
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/licenseStateText"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="Enter your license plate state"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:id="@+id/acceptLicensePlateState"/>
 
         <TextView
@@ -110,13 +110,14 @@
             android:layout_marginLeft="15dp"
             android:id="@+id/drivingLicenseStateText"/>
 
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/drivingLicenseStateText"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:hint="Enter your driving license state"
             android:id="@+id/drivingLicenseState"/>
 
@@ -142,7 +143,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Driving License Date of Birth"
+            android:text="Driving License Date of Birth (in MM/DD/YYYY)"
             android:layout_below="@+id/drivingLicenseCountry"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
@@ -156,7 +157,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="Enter your driving license date of birth (in MM/DD/YYYY)"
+            android:hint="Enter your driving license date of birth"
             android:id="@+id/drivingLicenseDOB"
             android:ems="10"
             android:inputType="date" />
@@ -197,192 +198,11 @@
             android:layout_below="@+id/acceptCarDescription"
             android:id="@+id/noExtraInfo"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Features"
-            android:textColor="#000000"
-            android:layout_below="@+id/noExtraInfo"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/featuresText"/>
-
-        <ToggleButton
-            android:id="@+id/hybridToggle"
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/featuresText"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="20dp"
-            android:checked="false"
-            android:textOff="Hybrid"
-            android:textOn="Hybrid" />
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/featuresText"
-            android:checked="false"
-            android:textOff="GPS"
-            android:textOn="GPS"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/GPSToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/hybridToggle"
-            android:checked="false"
-            android:textOff="Audio Input"
-            android:textOn="Audio Input"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/AudioInputToggle"/>
-
-        <ToggleButton
-            android:id="@+id/BikeRackToggle"
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/GPSToggle"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="20dp"
-            android:checked="false"
-            android:textOff="Bike Rack"
-            android:textOn="Bike Rack" />
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/AudioInputToggle"
-            android:checked="false"
-            android:textOff="Ski Rack"
-            android:textOn="Ski Rack"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/SkiRackToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/BikeRackToggle"
-            android:checked="false"
-            android:textOff="All-wheel drive"
-            android:textOn="All-wheel drive"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/allWheelDriveToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/SkiRackToggle"
-            android:checked="false"
-            android:textOff="Convertible"
-            android:textOn="Convertible"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/convertibleToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/allWheelDriveToggle"
-            android:checked="false"
-            android:textOff="Bluetooth"
-            android:textOn="Bluetooth"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/bluetoothToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/convertibleToggle"
-            android:checked="false"
-            android:textOff="Pet friendly"
-            android:textOn="Pet friendly"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/petFriendlyToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/bluetoothToggle"
-            android:checked="false"
-            android:textOff="Child seat"
-            android:textOn="Child seat"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/childSeatToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/petFriendlyToggle"
-            android:checked="false"
-            android:textOff="USB input"
-            android:textOn="USB input"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/USBInputToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/childSeatToggle"
-            android:checked="false"
-            android:textOff="Toll pass"
-            android:textOn="Toll pass"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/tollPassToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/USBInputToggle"
-            android:checked="false"
-            android:textOff="Snow tires or chains"
-            android:textOn="Snow tires or chains"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/snowTireToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/tollPassToggle"
-            android:checked="false"
-            android:textOff="Heated seats"
-            android:textOn="Heated seats"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/heatedSeatsToggle"/>
-
-        <ToggleButton
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/snowTireToggle"
-            android:checked="false"
-            android:textOff="Sunroof"
-            android:textOn="Sunroof"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/sunroofToggle"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sunroofToggle"
+            android:layout_below="@+id/noExtraInfo"
             android:layout_marginTop="35dp"
             android:layout_alignParentBottom="true"
             android:text="Next"

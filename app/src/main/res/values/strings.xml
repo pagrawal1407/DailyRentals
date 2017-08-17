@@ -10,7 +10,7 @@
     <string name="list_car">List your car</string>
     <string name="get_started">Get Started</string>
     <string name="learn_more">learn more</string>
-    <string name="address">Enter address</string>
+    <string name="address">Enter Address</string>
     <string name="zipcode">zip code</string>
     <string name="search_title">Search</string>
 
@@ -26,4 +26,32 @@
         <item> Minivan </item>
         <item> Truck </item>
     </string-array>
+
+    <string-array name="advNoticeArray">
+        <item> 12 Hours </item>
+        <item> 1 Day </item>
+        <item> 2 Days </item>
+        <item> 3 Days </item>
+        <item> 7 Days </item>
+    </string-array>
+
+    <string-array name="shortestTripArray">
+        <item> 1 Day </item>
+        <item> 2 Days </item>
+    </string-array>
+
+
+    <string-array name="longestDistanceArray">
+        <item> Set Limit </item>
+        <item> No Limit </item>
+    </string-array>
+
+    <string-array name="statesArray">
+        <item> Balochistan </item>
+        <item> Punjab </item>
+        <item> Sindh </item>
+        <item> Khyber Pakhtunkhwa </item>
+        <item> Islamabad Capital Territory  </item>
+    </string-array>
+
 </resources>

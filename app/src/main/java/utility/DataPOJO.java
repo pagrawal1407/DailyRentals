@@ -6,9 +6,9 @@ package utility;
 
 public class DataPOJO {
     public int zipcode;
+    //public CustomAddress address;
     public double latitude;
     public double longitude;
-    public String location;
     public int year;
     public String make;
     public String model;

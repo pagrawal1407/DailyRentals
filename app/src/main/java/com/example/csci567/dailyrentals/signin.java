@@ -95,17 +95,20 @@ public class signin extends Activity {
                         }catch (JSONException e){
                             e.printStackTrace();
                         }
-                        if (msg.equals("true") ){
-                            Intent intent = new Intent(getBaseContext(), WelcomePage.class);
-                            Toast.makeText(signin.this,"Success, you are logged in",Toast.LENGTH_SHORT).show();
-                            startActivity(intent);
-                        }
-                        else {
-                            Toast.makeText(signin.this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
-                            passwd.setText("");
-                            passwd.setHighlightColor(0xffff0000);
-                            email.setText("");
-                            email.setHighlightColor(0xffff0000);
+                        if (msg != null) {
+                            if (!msg.equals("false") ){
+                                Intent intent = new Intent(getBaseContext(), WelcomePage.class);
+                                Toast.makeText(signin.this,"Success, you are logged in",Toast.LENGTH_SHORT).show();
+                                intent.putExtra("name", msg);
+                                startActivity(intent);
+                            }
+                            else {
+                                Toast.makeText(signin.this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
+                                passwd.setText("");
+                                passwd.setHighlightColor(0xffff0000);
+                                email.setText("");
+                                email.setHighlightColor(0xffff0000);
+                            }
                         }
                     }
 

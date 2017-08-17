@@ -5,15 +5,19 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -30,31 +34,41 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
+import id.zelory.compressor.Compressor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 
-import static android.R.attr.data;
+import utility.CustomAddress;
 
 public class DetailsActivity extends AppCompatActivity {
 
     private Button next;
-    private EditText licensePlateNumber, licensePlateState, carDescription, drivingLicenseNumberText, drivingLicenseStateText, drivingLicenseCountryText, licenseDOB;
+    private EditText licensePlateNumber, carDescription, drivingLicenseNumberText, drivingLicenseCountryText, licenseDOB;
     private Bundle bundle;
+    private Spinner licensePlateState, drivingLicenseStateText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
         bundle = getIntent().getExtras();
+
+        ArrayAdapter<CharSequence> adapterState = ArrayAdapter.createFromResource(this, R.array.statesArray, R.layout.spinner_layout);
+        adapterState.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        licensePlateState = (Spinner) findViewById(R.id.acceptLicensePlateState);
+        licensePlateState.setAdapter(adapterState);
+
+        drivingLicenseStateText = (Spinner) findViewById(R.id.drivingLicenseState);
+        drivingLicenseStateText.setAdapter(adapterState);
+
         initializeEditText();
         onNextPressed();
     }
@@ -63,19 +77,48 @@ public class DetailsActivity extends AppCompatActivity {
 
         next = (Button) findViewById(R.id.nextButton);
         next.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
 
-                String licensePlateNumberText, licensePlateStateText, carDescriptionText, licenseNumberText, licenseStateText, licenseCountryText, licenseDOBText;
+                String licensePlateNumberText, carDescriptionText, licenseNumberText, licenseStateText, licenseCountryText, licenseDOBText;
                 licensePlateNumberText = licensePlateNumber.getText().toString();
-                licensePlateStateText = licensePlateState.getText().toString();
+               // licensePlateStateText = licensePlateState.getText().toString();
                 carDescriptionText = carDescription.getText().toString();
                 licenseNumberText = drivingLicenseNumberText.getText().toString();
-                licenseStateText = drivingLicenseStateText.getText().toString();
+               // licenseStateText = drivingLicenseStateText.getText().toString();
                 licenseCountryText = drivingLicenseCountryText.getText().toString();
                 licenseDOBText = licenseDOB.getText().toString();
+
+                final String[] selectedPlateState = new String[1];
+                licensePlateState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        selectedPlateState[0] = parent.getItemAtPosition(position).toString();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                final String[] selectedLicenseState = new String[1];
+                drivingLicenseStateText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        selectedLicenseState[0] = parent.getItemAtPosition(position).toString();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+
                 String formattedDate = "";
-                if(licenseDOBText != "") {
+                if(!Objects.equals(licenseDOBText, "")) {
                     String[] splitDOB = licenseDOBText.split("/");
                     formattedDate = splitDOB[2] + "-" + splitDOB[0] + "-" + splitDOB[1];
                 }
@@ -90,16 +133,39 @@ public class DetailsActivity extends AppCompatActivity {
                 }
                 String latitude = "";
                 String longitude = "";
+                double lat = 0;
+                double lgn = 0;
                 Address add = null;
                 if (list != null) {
                     add = list.get(0);
-                    double lat = add.getLatitude();
-                    double lgn = add.getLongitude();
+                    lat = add.getLatitude();
+                    lgn = add.getLongitude();
                     latitude = Double.toString(lat);
                     longitude = Double.toString(lgn);
                 }
 
-
+                JSONObject location = new JSONObject();
+                JSONObject address = new JSONObject();
+                try {
+                    location.put("latitude",latitude);
+                    location.put("longitude", longitude);
+                    address.put("geoLocation", location);
+                    address.put("city", bundle.getString("city"));
+                    address.put("street1",bundle.getString("address"));
+                    address.put("zipcode",bundle.getString("zipcode"));
+                    address.put("state", bundle.getString("state"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                /*
+                CustomAddress address = new CustomAddress();
+                address.street1 = bundle.getString("address");
+                address.City = bundle.getString("city");
+                address.State = bundle.getString("state");
+                Location location = new Location("");
+                location.setLatitude(lat);
+                location.setLongitude(lgn);
+                address.geoLocation = location;*/
 /*
                 String imagePath = bundle.getString("imagePath");
                 Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
@@ -109,15 +175,21 @@ public class DetailsActivity extends AppCompatActivity {
                 String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 */
                 Toast.makeText(getApplicationContext(), licensePlateNumberText,Toast.LENGTH_SHORT).show();
-                Map<String,String> jsonparams = new HashMap<String, String>();
+                Map<String,Object> jsonparams = new HashMap<String, Object>();
                 jsonparams.put("licensePlateNum",licensePlateNumberText);
-                jsonparams.put("licenseState",licensePlateStateText);
+                jsonparams.put("licenseState",selectedPlateState[0]);
                 jsonparams.put("carDes", carDescriptionText);
                 jsonparams.put("licenseNum", licenseNumberText);
-                jsonparams.put("issuingState", licenseStateText);
+                jsonparams.put("issuingState", selectedLicenseState[0]);
                 jsonparams.put("issuingCountry", licenseCountryText);
                 jsonparams.put("fNameOnLic", bundle.getString("fName"));
                 jsonparams.put("lNameOnLic", bundle.getString("lName"));
+                jsonparams.put("gps", bundle.getString("gps"));
+                jsonparams.put("hybrid", bundle.getString("hybrid"));
+                jsonparams.put("bluetooth", bundle.getString("bluetooth"));
+                jsonparams.put("petFriendly", bundle.getString("petFriendly"));
+                jsonparams.put("audioPlayer", bundle.getString("audioPlayer"));
+                jsonparams.put("sunRoof", bundle.getString("sunRoof"));
                 jsonparams.put("dob", formattedDate);
                 jsonparams.put("advNotice", bundle.getString("advancenotice"));
                 jsonparams.put("shortPT", bundle.getString("shortesttrip"));
@@ -132,6 +204,7 @@ public class DetailsActivity extends AppCompatActivity {
                 jsonparams.put("odometer", bundle.getString("odometer"));
                 jsonparams.put("trim", bundle.getString("trim"));
                 jsonparams.put("style", bundle.getString("style"));
+                jsonparams.put("address", address);
                 volleycall(jsonparams);
                 uploadCarImage(bundle.getString("imagePath"), licensePlateNumberText);
             }
@@ -143,11 +216,29 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void run() {
                 File f = new File(selectedPath);
+                Bitmap compressedImageFile = null;
+                try {
+                    compressedImageFile = new Compressor(DetailsActivity.this).compressToBitmap(f);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 String content_type = getMimeType(selectedPath);
 
-                Bitmap bmp = BitmapFactory.decodeFile(selectedPath);
+                /*Bitmap bmp = BitmapFactory.decodeFile(selectedPath);
+                int height = bmp.getHeight();
+                int width= bmp.getWidth();
+                Bitmap resized = bmp;
+                if (width > 4096) {
+                   resized  = Bitmap.createScaledBitmap(bmp, 4050, height, true);
+                }
+                if (height > 4096){
+                    int newWidth = resized.getWidth();
+                    resized  = Bitmap.createScaledBitmap(bmp, newWidth, 4050, true);
+                }*/
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                bmp.compress(Bitmap.CompressFormat.JPEG, 10, bos);
+                if (compressedImageFile != null) {
+                    compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+                }
 
 
                 OkHttpClient client = new OkHttpClient();
@@ -235,10 +326,8 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void initializeEditText() {
         licensePlateNumber = (EditText) findViewById(R.id.acceptLicensePlate);
-        licensePlateState = (EditText) findViewById(R.id.acceptLicensePlateState);
         carDescription = (EditText) findViewById(R.id.acceptCarDescription);
         drivingLicenseNumberText = (EditText) findViewById(R.id.drivingLicenseNumber);
-        drivingLicenseStateText = (EditText) findViewById(R.id.drivingLicenseState);
         drivingLicenseCountryText = (EditText) findViewById(R.id.drivingLicenseCountry);
         licenseDOB = (EditText) findViewById(R.id.drivingLicenseDOB);
     }

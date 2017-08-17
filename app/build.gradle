@@ -23,6 +23,8 @@ repositories{
     maven{
         url "http://dl.bintray.com/lukaville/maven"
     }
+    maven { url "https://jitpack.io" }
+
 }
 
 dependencies {
@@ -38,5 +40,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     compile 'com.nbsp:library:1.09'
+    compile 'id.zelory:compressor:2.1.0'
+    compile 'com.github.badoualy:datepicker-timeline:c6dcd05737'
+
+    compile 'com.borax12.materialdaterangepicker:library:1.9'
+
     compile 'com.android.support:appcompat-v7:25.3.1'
 }

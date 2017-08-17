@@ -36,11 +36,12 @@
         app:layout_constraintVertical_bias="0.13"
         android:layout_marginStart="15dp" />
 
-    <EditText
+    <Spinner
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/acceptAdvanceNotice"
         android:hint="Advance Notice"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_marginLeft="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -56,6 +57,7 @@
         android:textSize="16dp"
         android:id="@+id/blockNoticeText"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -103,11 +105,12 @@
         app:layout_constraintVertical_bias="0.46"
         android:layout_marginStart="15dp" />
 
-    <EditText
+    <Spinner
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/acceptShortestTrip"
         android:hint="Enter Shortest Trip"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_marginLeft="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -130,11 +133,12 @@
         app:layout_constraintVertical_bias="0.6"
         android:layout_marginStart="15dp" />
 
-    <EditText
+    <Spinner
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/acceptLongestTrip"
         android:hint="Enter Longest Trip"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_marginLeft="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -142,6 +146,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.66"
         android:layout_marginStart="15dp" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/setlimit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.76"
+        android:hint="Enter the value of longest possible trip"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp" />
 
     <Button
         android:layout_width="0dp"

@@ -140,6 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/list_car"
+            android:background="#7c46e7"
             android:id="@+id/listcar_button"
             android:layout_marginTop="25dp"
             android:layout_below="@+id/rentcar_text"/>
